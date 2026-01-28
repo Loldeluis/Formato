@@ -1,0 +1,356 @@
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                ║
+║            ✅ SISTEMA DE GUARDADO LOCAL + ENVÍO A PHP IMPLEMENTADO           ║
+║                                                                                ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+📌 TU PREGUNTA:
+   ¿Qué tan posible es que al guardar o editar todo se haga de manera local 
+   pero que al presionar el botón que dice enviar a PHP se active el insertar 
+   y se mande ese registro a la base de datos?
+
+✅ RESPUESTA: 100% POSIBLE Y YA IMPLEMENTADO
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 COMPARACIÓN: ANTES vs AHORA
+
+┌─────────────────────────────────────────┬─────────────────────────────────────────┐
+│ ❌ ANTES                                │ ✅ AHORA                                │
+├─────────────────────────────────────────┼─────────────────────────────────────────┤
+│ Click Guardar                           │ Click Guardar Localmente                │
+│   ↓                                     │   ↓                                     │
+│ Guarda en localStorage                  │ Guarda en localStorage                  │
+│   ↓                                     │   ↓                                     │
+│ AUTOMÁTICAMENTE envía a PHP             │ Aparece botón "Enviar a Base de Datos" │
+│ (sin control del usuario)               │   ↓                                     │
+│                                         │ Usuario decide cuándo enviar            │
+│                                         │   ↓                                     │
+│                                         │ Click "Enviar a Base de Datos"         │
+│                                         │   ↓                                     │
+│                                         │ Envía a PHP (insertar.php)             │
+│                                         │   ↓                                     │
+│                                         │ Se guarda en SQL Server                │
+│ Ventajas: Automático                    │ Ventajas: Control total, sin internet  │
+│ Desventajas: Sin control                │ Desventajas: Requiere dos pasos        │
+└─────────────────────────────────────────┴─────────────────────────────────────────┘
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 CÓMO USAR
+
+PASO 1️⃣: GUARDAR LOCALMENTE (Sin Internet)
+  1. Abre editar_limpieza.php
+  2. Llena el formulario con datos
+  3. Click "Guardar Localmente"
+     ✅ Se guarda en localStorage
+     ✅ Funciona sin internet
+     ✅ Aparece botón "Enviar a Base de Datos"
+
+PASO 2️⃣: ENVIAR A PHP (Con Internet)
+  1. Cuando tengas conexión a internet
+  2. Click "Enviar a Base de Datos"
+     ✅ Se envía a insertar.php
+     ✅ Se guarda en SQL Server
+     ✅ Aparece en ver_formatos.php
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📁 ARCHIVOS CREADOS (DOCUMENTACIÓN)
+
+ 1. RESPUESTA_RAPIDA.md
+    ⭐ COMIENZA AQUÍ - Explicación en 2 minutos
+    - Tabla comparativa
+    - Casos de uso
+    - Cómo probar
+
+ 2. ARQUITECTURA_GUARDADO_LOCAL.md
+    📖 DOCUMENTACIÓN COMPLETA
+    - Explicación detallada del sistema
+    - localStorage vs SQL Server
+    - Casos de uso avanzados
+    - Debugging y troubleshooting
+
+ 3. CAMBIOS_REALIZADOS.md
+    🔧 DETALLES TÉCNICOS
+    - Código antes y después
+    - Línea por línea
+    - Funciones nuevas
+    - Próximas mejoras
+
+ 4. VISUALIZACION_SISTEMA.html
+    🌐 PÁGINA INTERACTIVA
+    - Abrir en navegador
+    - Diagramas visuales
+    - Flujos animados
+    - Tests explicados
+
+ 5. INDICE_COMPLETO.md
+    📑 ÍNDICE Y REFERENCIA
+    - Todas las secciones
+    - Estructura completa
+    - Checklist de verificación
+
+ 6. RESUMEN_VISUAL.txt
+    📋 ESTE ARCHIVO
+    - Vista general rápida
+    - ASCII art diagrams
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✏️ ARCHIVO MODIFICADO
+
+editar_limpieza.php
+├── Línea ~370: Botones actualizados
+│   ├── "Guardar Localmente" (nuevo texto)
+│   └── "Enviar a Base de Datos" (nuevo botón, aparece después de guardar)
+│
+├── Línea ~757: Guardado sin envío automático
+│   ├── Eliminó: setTimeout que enviaba automáticamente
+│   └── Agregó: Mostrar botón "Enviar a Base de Datos"
+│
+├── Línea ~997: Nueva función enviarAPhpManual()
+│   └── Envía el registro a PHP cuando el usuario lo solicita
+│
+├── Línea ~1009: Nueva función mostrarEstadoSync()
+│   └── Muestra alerta de "pendiente de enviar"
+│
+└── Línea ~1021: Función limpiarFormulario() actualizada
+    └── Oculta botón "Enviar" cuando se limpia
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💡 VENTAJAS DEL NUEVO SISTEMA
+
+✅ FUNCIONA SIN INTERNET
+   └─ Puedes guardar en el terreno, enviar en la oficina
+
+✅ CONTROL TOTAL DEL USUARIO
+   └─ Tú decides cuándo enviar a la base de datos
+
+✅ RESPUESTA INSTANTÁNEA
+   └─ Guardar es inmediato (no espera al servidor)
+
+✅ REINTENTOS INFINITOS
+   └─ Si falla, puedes intentar de nuevo sin perder datos
+
+✅ REVISIÓN PREVIA
+   └─ Ver vista previa antes de enviar a la BD
+
+✅ DATOS SIEMPRE DISPONIBLES
+   └─ Incluso si se cae el servidor, los datos están en el navegador
+
+✅ UX MÁS CLARA
+   └─ Usuario entiende la diferencia entre "guardar" y "enviar"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🗄️ ALMACENAMIENTO DE DATOS
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ localStorage (Navegador)                                                     │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ ✅ Funciona sin internet                                                    │
+│ ✅ Respuesta instantánea (~1ms)                                             │
+│ ✅ Datos persisten aunque cierres navegador                                 │
+│ ✅ Puedes editar varias veces                                               │
+│                                                                              │
+│ ❌ Límite de ~5-10 MB                                                       │
+│ ❌ Se borra si limpias caché                                                │
+│ ❌ Solo visible en ese navegador                                            │
+│                                                                              │
+│ Ejemplo:                                                                     │
+│   localStorage.setItem('ambulancia:5678', JSON.stringify(datos))            │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ SQL Server (Base de Datos)                                                  │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ ✅ Permanente                                                               │
+│ ✅ Visible desde cualquier dispositivo                                      │
+│ ✅ Sin límite de tamaño                                                     │
+│ ✅ Respaldado en servidor                                                   │
+│                                                                              │
+│ ❌ Requiere internet                                                        │
+│ ❌ Depende de disponibilidad del servidor                                   │
+│                                                                              │
+│ Ejemplo:                                                                     │
+│   INSERT INTO formatos_limpieza (mes, anio, sede, ...) VALUES (...)        │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 CASOS DE USO REALES
+
+CASO 1: Ambulancia en el Terreno
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 09:00 → Llenar formulario de limpieza de Enero                             │
+│ 09:02 → Click "Guardar Localmente" ✅ (sin internet)                        │
+│ 09:05 → Llenar otro registro de limpieza                                   │
+│ 09:07 → Click "Guardar Localmente" ✅ (sin internet)                        │
+│ ...   → Guardar varios registros                                            │
+│ 14:00 → Volver a base (internet disponible)                                │
+│ 14:02 → Click "Enviar a Base de Datos" para cada registro ✅               │
+│ 14:05 → Todos los registros en SQL Server ✅                               │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+CASO 2: Edición Cuidadosa en Oficina
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 1. Abrir editar_limpieza.php                                                │
+│ 2. Llenar Limpieza de Enero → "Guardar Localmente" ✅                       │
+│ 3. Click "Lista" → Abrir Limpieza de Febrero                                │
+│ 4. Editar datos → "Guardar Localmente" ✅                                   │
+│ 5. Repetir para todos los meses                                             │
+│ 6. Cuando todo esté correcto → "Enviar a Base de Datos" ✅                  │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+CASO 3: Revisión Previa Antes de Enviar
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 1. Llenar formulario con datos                                              │
+│ 2. Click "Guardar Localmente" ✅                                            │
+│ 3. Click "Imprimir/Vista Previa"                                            │
+│ 4. Revisar datos en el PDF                                                  │
+│ 5a. Si está correcto → "Enviar a Base de Datos" ✅                          │
+│ 5b. Si hay error → Editar → "Guardar Localmente" (de nuevo)                 │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🧪 CÓMO PROBAR
+
+TEST 1: Guardar sin Internet
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 1. Abre DevTools (presiona F12)                                             │
+│ 2. Ve a la pestaña "Network"                                                │
+│ 3. Busca la opción "Offline" y actívala                                     │
+│ 4. Llena el formulario en editar_limpieza.php                               │
+│ 5. Click "Guardar Localmente"                                               │
+│    ✅ DEBE FUNCIONAR sin internet                                           │
+│    ✅ DEBE aparecer alerta verde                                            │
+│    ✅ DEBE aparecer botón "Enviar a Base de Datos"                          │
+│ 6. Recarga la página (Ctrl+R)                                               │
+│    ✅ LOS DATOS DEBEN ESTAR AHWW (en localStorage)                          │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+TEST 2: Ver localStorage
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 1. Abre DevTools (F12)                                                      │
+│ 2. Ve a "Application" → "Local Storage"                                     │
+│ 3. Busca claves que empiecen con "ambulancia:"                              │
+│ 4. Click en una para expandir y ver el JSON                                 │
+│    ✅ DEBE MOSTRAR todos los datos del formulario                           │
+│    ✅ DEBE tener: mes, anio, sede, movil, control, etc.                    │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+TEST 3: Enviar a PHP
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 1. Pon DevTools en modo "Online" (desactiva Offline)                        │
+│ 2. Click botón "Enviar a Base de Datos"                                     │
+│ 3. Ve a DevTools → Network y busca "insertar.php"                           │
+│    ✅ DEBE HABER una petición POST                                          │
+│    ✅ DEBE tener status 200 u otro código exitoso                           │
+│ 4. Abre ver_formatos.php                                                    │
+│    ✅ EL REGISTRO DEBE APARECER en la tabla                                 │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🆕 NUEVAS FUNCIONES JAVASCRIPT
+
+function enviarAPhpManual()
+  ├─ Obtiene el ID del registro guardado localmente
+  ├─ Verifica que no esté vacío
+  └─ Envía a PHP si es válido
+     └─ Llama a exportarRegistroPHP()
+
+function mostrarEstadoSync(registroId, esEdicion)
+  ├─ Muestra alerta "Tienes un registro pendiente de enviar"
+  ├─ Diferencia entre nuevo y actualización
+  └─ Aparece después de "Guardar Localmente"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚠️  COSAS IMPORTANTES
+
+1. localStorage tiene límite de ~5-10 MB
+   → Envía a PHP regularmente para liberar espacio
+
+2. Si limpias caché/cookies, se pierden los datos no enviados
+   → Recordar enviar a PHP antes de limpiar
+
+3. localStorage es por navegador
+   → Cada navegador (Chrome, Firefox, Edge) tiene su propio almacenamiento
+
+4. El botón "Enviar a PHP" solo aparece después de "Guardar Localmente"
+   → Esto es intencional para evitar errores
+
+5. Si falla el envío a PHP, los datos siguen en localStorage
+   → Puedes reintentar múltiples veces
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📋 CHECKLIST DE VERIFICACIÓN
+
+ [ ] Abriste editar_limpieza.php
+ [ ] Viste el botón "Guardar Localmente"
+ [ ] Llenaste el formulario
+ [ ] Clickeaste "Guardar Localmente"
+ [ ] Viste alerta verde con mensaje
+ [ ] Viste aparecer botón "Enviar a Base de Datos"
+ [ ] Abriste DevTools (F12)
+ [ ] Viste los datos en localStorage
+ [ ] Clickeaste "Enviar a Base de Datos"
+ [ ] Se envió a PHP correctamente
+ [ ] El registro apareció en ver_formatos.php
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📞 DÓNDE ENCONTRAR AYUDA
+
+ 📌 Pregunta rápida (2 min)
+    → Lee: RESPUESTA_RAPIDA.md
+
+ 📌 Explicación detallada (20 min)
+    → Lee: ARQUITECTURA_GUARDADO_LOCAL.md
+
+ 📌 Cambios técnicos exactos (30 min)
+    → Lee: CAMBIOS_REALIZADOS.md
+
+ 📌 Visualización interactiva
+    → Abre: VISUALIZACION_SISTEMA.html en navegador
+
+ 📌 Referencia completa
+    → Lee: INDICE_COMPLETO.md
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ RESUMEN FINAL
+
+Tu pregunta:
+  "¿Qué tan posible es guardar local y enviar después?"
+
+Nuestra respuesta:
+  "100% POSIBLE Y YA IMPLEMENTADO"
+
+Lo que se modificó:
+  ✅ Separación guardado local vs envío PHP
+  ✅ Botón "Guardar Localmente" (localStorage)
+  ✅ Botón "Enviar a Base de Datos" (PHP)
+  ✅ Indicador de estado
+  ✅ Funciones nuevas
+  ✅ Documentación completa
+
+¿Cuándo puedo usarlo?
+  ✅ AHORA MISMO - Está listo para usar
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎉 ¡COMPLETADO CON ÉXITO!
+
+Fecha: 28 de enero de 2026
+Estado: ✅ Implementado y documentado
+Versión: 1.0
+
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                         ¡Listo para usar!  🚀                                ║
+╚════════════════════════════════════════════════════════════════════════════════╝

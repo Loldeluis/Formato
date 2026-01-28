@@ -1,0 +1,20 @@
+body{
+background: #dbdbdb;
+}
+
+#nav_pric{
+background: linear-gradient(to right, rgb(7 101 156) 0%, rgb(8 101 156) 3%, rgb(7 101 156) 63%, rgb(10 102 157) 99%, rgb(7 101 156) 100%);
+
+
+}
+
+.main-section{
+margin-left: auto;
+margin-right: auto;
+padding: 0px;
+
+}
+#guardar{
+margin-left: auto;
+margin-right: auto;
+}

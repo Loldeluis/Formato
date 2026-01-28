@@ -1,0 +1,28 @@
+
+body{
+background: linear-gradient(to right, rgb(7 101 156) 0%, rgb(8 101 156) 3%, rgb(7 101 156) 63%, rgb(10 102 157) 99%, rgb(7 101 156) 100%);
+
+}
+.main-section{
+margin-left: auto;
+margin-right: auto;
+padding: 0px;
+
+}
+.modal-content{
+margin-top: 5%;
+box-shadow: 0px 0px 3px #848484;
+padding: 20px 20px;
+
+}
+
+
+#nav_prin{
+background:linear-gradient(to right, rgba(22,66,115,1) 0%, rgba(22,66,115,1) 3%, rgba(32,92,164,1) 63%, rgba(32,92,164,1) 99%, rgba(32,92,164,1) 100%);
+
+}
+
+#guardar{
+margin-left: auto;
+margin-right: auto;
+}
