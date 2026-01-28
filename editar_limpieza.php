@@ -367,22 +367,16 @@ tr, td, th {
                         </div>
 
                         <!-- BOTONES -->
-                        <div class="d-flex gap-2 mb-4 flex-wrap">
+                        <div class="d-flex gap-2 mb-4">
                             <button class="btn btn-primary" type="button" onclick="guardarFormulario()">
-                                <i class="far fa-save"></i> <span id="btnGuardarTexto">Guardar Localmente</span>
+                                <i class="far fa-save"></i> <span id="btnGuardarTexto">Guardar</span>
                             </button>
-                            <button class="btn btn-success" type="button" id="btnEnviarPHP" style="display:none;" onclick="enviarAPhpManual()">
-                                <i class="fas fa-cloud-upload-alt"></i> Enviar a Base de Datos
-                            </button>
-                            <button class="btn btn-info" type="button" onclick="abrirVistaPrevia()">
+                            <button class="btn btn-success" type="button" onclick="abrirVistaPrevia()">
                                 <i class="fas fa-print"></i> Imprimir/Vista Previa
                             </button>
                             <button class="btn btn-secondary" type="button" onclick="limpiarFormulario()" id="btnLimpiar" style="display:none;">
                                 <i class="fas fa-times"></i> Cancelar Edición
                             </button>
-                        </div>
-                        <div id="estadoSync" class="alert alert-info" style="display:none;margin-top:10px;">
-                            <i class="fas fa-info-circle"></i> <span id="textoSync"></span>
                         </div>
 
                     </form>
@@ -619,10 +613,6 @@ async function cargarRegistroDesdeBD(idFormato) {
         // Actualizar botón
         document.getElementById('btnGuardarTexto').textContent = 'Actualizar';
         document.getElementById('btnLimpiar').style.display = 'inline-block';
-        document.getElementById('btnEnviarPHP').style.display = 'inline-block';
-        
-        // Mostrar estado de sincronización
-        mostrarEstadoSync(data.id_formato, true);
         
         // Cambiar a tab de formulario
         const nuevoTab = document.getElementById('nuevo-tab');
@@ -762,7 +752,7 @@ async function guardarFormulario() {
 
     try {
         await window.storage.set(`ambulancia:${registroId}`, JSON.stringify(data));
-        mostrarAlerta('✓ Registro guardado localmente. Presiona "Enviar a Base de Datos" cuando estés listo.', 'success');
+        mostrarAlerta('Registro guardado.', 'info');
         
         // Actualizar registrosGlobales
         if (modoEdicion) {
@@ -776,11 +766,11 @@ async function guardarFormulario() {
             registrosGlobales.unshift(data);
         }
         
+        limpiarFormulario();
         cargarContadorRegistros();
         
-        // Mostrar botón de envío a PHP
-        document.getElementById('btnEnviarPHP').style.display = 'inline-block';
-        mostrarEstadoSync(registroId, modoEdicion);
+        // Enviar automáticamente a PHP después de 500ms
+      
     } catch (error) {
         mostrarAlerta('Error al guardar el registro', 'danger');
         console.error(error);
@@ -994,36 +984,10 @@ function editarRegistro(id) {
 
     document.getElementById('btnGuardarTexto').textContent = 'Actualizar';
     document.getElementById('btnLimpiar').style.display = 'inline-block';
-    document.getElementById('btnEnviarPHP').style.display = 'inline-block';
-    
-    mostrarEstadoSync(registro.id, true);
     
     mostrarAlerta('Editando registro. Realiza los cambios y haz clic en Actualizar', 'info');
     
     window.scrollTo(0, 0);
-}
-
-// ========================= ENVIAR A PHP MANUALMENTE =========================
-function enviarAPhpManual() {
-    const registroId = document.getElementById('registroId').value;
-    const modoEdicion = document.getElementById('modoEdicion').value === 'true';
-    
-    if (!registroId) {
-        mostrarAlerta('⚠️ No hay registro guardado para enviar', 'warning');
-        return;
-    }
-    
-    exportarRegistroPHP(registroId, true, modoEdicion);
-}
-
-// ========================= MOSTRAR ESTADO DE SINCRONIZACIÓN =========================
-function mostrarEstadoSync(registroId, esEdicion) {
-    const estadoDiv = document.getElementById('estadoSync');
-    const textoSync = document.getElementById('textoSync');
-    
-    const tipo = esEdicion ? 'actualización' : 'nuevo registro';
-    textoSync.textContent = `Tienes un ${tipo} pendiente de enviar a la base de datos.`;
-    estadoDiv.style.display = 'block';
 }
 
 // ========================= LIMPIAR FORMULARIO =========================
@@ -1031,10 +995,8 @@ function limpiarFormulario() {
     document.getElementById('formPrincipal').reset();
     document.getElementById('registroId').value = '';
     document.getElementById('modoEdicion').value = 'false';
-    document.getElementById('btnGuardarTexto').textContent = 'Guardar Localmente';
+    document.getElementById('btnGuardarTexto').textContent = 'Guardar';
     document.getElementById('btnLimpiar').style.display = 'none';
-    document.getElementById('btnEnviarPHP').style.display = 'none';
-    document.getElementById('estadoSync').style.display = 'none';
     
     // Limpiar todos los checkboxes
     areas.forEach((area, i) => {

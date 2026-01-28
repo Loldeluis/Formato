@@ -839,7 +839,7 @@ function guardarFormulario() {
     }
 
     if (Storage.set(`verificacion:${registroId}`, JSON.stringify(data))) {
-        mostrarAlerta('Registro guardado correctamente en el navegador. Enviando a la base de datos...', 'success');
+        mostrarAlerta('Registro guardado correctamente en el navegador.', 'success');
         
         // Actualizar registrosGlobales con el nuevo dato
         registrosGlobales.unshift(data);
@@ -848,9 +848,7 @@ function guardarFormulario() {
         cargarContadorRegistros();
         
         // Automáticamente enviar a PHP después de 500ms
-        setTimeout(() => {
-            exportarRegistroPHP(registroId, true);
-        }, 500);
+      
     } else {
         mostrarAlerta('Error al guardar el registro', 'danger');
     }

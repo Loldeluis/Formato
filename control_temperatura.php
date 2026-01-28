@@ -604,7 +604,7 @@ function guardarFormulario() {
 
     // Guardar localmente primero
     if (Storage.set(`temperatura:${registroId}`, JSON.stringify(data))) {
-        mostrarAlerta('Registro guardado en navegador. Enviando a base de datos...', 'info');
+        mostrarAlerta('Registro guardado en navegador. ', 'info');
         
         // Actualizar registrosGlobales con el nuevo dato
         registrosGlobales.unshift(data);
@@ -613,9 +613,7 @@ function guardarFormulario() {
         cargarContadorRegistros();
         
         // Automáticamente enviar a PHP después de 500ms
-        setTimeout(() => {
-            exportarRegistroPHP(registroId, true);
-        }, 500);
+       
     } else {
         mostrarAlerta('Error al guardar el registro', 'danger');
     }
